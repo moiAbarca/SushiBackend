@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints version="2.0" xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime">
+  <endpoint implementation="WebService.ServiceAdministrador" name="ServiceAdministrador" url-pattern="/ServiceAdministrador"/>
+  <endpoint implementation="WebService.ServiceCategoriaProducto" name="ServiceCategoriaProducto" url-pattern="/ServiceCategoriaProducto"/>
+  <endpoint implementation="WebService.ServiceCliente" name="ServiceCliente" url-pattern="/ServiceCliente"/>
+  <endpoint implementation="WebService.ServiceEstablecimiento" name="ServiceEstablecimiento" url-pattern="/ServiceEstablecimiento"/>
+  <endpoint implementation="WebService.ServiceOferta" name="ServiceOferta" url-pattern="/ServiceOferta"/>
+  <endpoint implementation="WebService.ServiceOfertaProducto" name="ServiceOfertaProducto" url-pattern="/ServiceOfertaProducto"/>
+  <endpoint implementation="WebService.ServicePedidoCabecera" name="ServicePedidoCabecera" url-pattern="/ServicePedidoCabecera"/>
+  <endpoint implementation="WebService.ServicePedidoDetalle" name="ServicePedidoDetalle" url-pattern="/ServicePedidoDetalle"/>
+  <endpoint implementation="WebService.ServiceProducto" name="ServiceProducto" url-pattern="/ServiceProducto"/>
+  <endpoint implementation="WebService.ServiceRegistroPago" name="ServiceRegistroPago" url-pattern="/ServiceRegistroPago"/>
+  <endpoint implementation="WebService.ServiceSeguimiento" name="ServiceSeguimiento" url-pattern="/ServiceSeguimiento"/>
+  <endpoint implementation="WebService.ServiceTipoPago" name="ServiceTipoPago" url-pattern="/ServiceTipoPago"/>
+  <endpoint implementation="WebService.ServiceUsuario" name="ServiceUsuario" url-pattern="/ServiceUsuario"/>
+</endpoints>

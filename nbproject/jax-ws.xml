@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jax-ws xmlns="http://www.netbeans.org/ns/jax-ws/1">
+  <services>
+    <service name="ServiceAdministrador">
+      <implementation-class>WebService.ServiceAdministrador</implementation-class>
+    </service>
+    <service name="ServiceCategoriaProducto">
+      <implementation-class>WebService.ServiceCategoriaProducto</implementation-class>
+    </service>
+    <service name="ServiceCliente">
+      <implementation-class>WebService.ServiceCliente</implementation-class>
+    </service>
+    <service name="ServiceEstablecimiento">
+      <implementation-class>WebService.ServiceEstablecimiento</implementation-class>
+    </service>
+    <service name="ServiceOferta">
+      <implementation-class>WebService.ServiceOferta</implementation-class>
+    </service>
+    <service name="ServiceOfertaProducto">
+      <implementation-class>WebService.ServiceOfertaProducto</implementation-class>
+    </service>
+    <service name="ServicePedidoCabecera">
+      <implementation-class>WebService.ServicePedidoCabecera</implementation-class>
+    </service>
+    <service name="ServicePedidoDetalle">
+      <implementation-class>WebService.ServicePedidoDetalle</implementation-class>
+    </service>
+    <service name="ServiceProducto">
+      <implementation-class>WebService.ServiceProducto</implementation-class>
+    </service>
+    <service name="ServiceRegistroPago">
+      <implementation-class>WebService.ServiceRegistroPago</implementation-class>
+    </service>
+    <service name="ServiceSeguimiento">
+      <implementation-class>WebService.ServiceSeguimiento</implementation-class>
+    </service>
+    <service name="ServiceTipoPago">
+      <implementation-class>WebService.ServiceTipoPago</implementation-class>
+    </service>
+    <service name="ServiceUsuario">
+      <implementation-class>WebService.ServiceUsuario</implementation-class>
+    </service>
+  </services>
+  <clients/>
+  <jsr109>false</jsr109>
+</jax-ws>
