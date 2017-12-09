@@ -16,10 +16,13 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 
 public class Oferta {
+
+    
     private int ofertaId;
     private double porcentajeOferta;
     private String fechaInicio;
     private String fechaTermino;
+    private String nombre;
 
     /**
      * @return the ofertaId
@@ -77,5 +80,19 @@ public class Oferta {
      */
     public void setFechaTermino(String fechaTermino) {
         this.fechaTermino = fechaTermino;
+    }
+    
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 }

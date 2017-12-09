@@ -60,6 +60,7 @@ public class OracleOferta implements OfertaDao{
                 bOferta.setPorcentajeOferta(rs.getInt(2));
                 bOferta.setFechaInicio(rs.getString(3));
                 bOferta.setFechaTermino(rs.getString(4));
+                bOferta.setNombre(rs.getString(5));
                 cOferta.add(bOferta);
             }
             rs.close();
@@ -82,13 +83,14 @@ public class OracleOferta implements OfertaDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.OFERTA_tapi.ins(?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.OFERTA_tapi.ins(?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, oferta.getOfertaId());
             cs.setString(2, oferta.getFechaTermino());
             cs.setString(3, oferta.getFechaInicio());
             cs.setDouble(4, oferta.getPorcentajeOferta());
+            cs.setString(5, oferta.getNombre());
             cs.execute();          
             cs.close();
         }
@@ -109,12 +111,13 @@ public class OracleOferta implements OfertaDao{
         {            
             con = db.getConnection();
             //llama al update de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.OFERTA_tapi.upd(?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.OFERTA_tapi.upd(?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             cs.setInt(1, oferta.getOfertaId());
             cs.setString(2, oferta.getFechaTermino());
             cs.setString(3, oferta.getFechaInicio());
             cs.setDouble(4, oferta.getPorcentajeOferta());
+            cs.setString(5, oferta.getNombre());
             cs.execute();          
             cs.close();
         }
@@ -180,6 +183,7 @@ public class OracleOferta implements OfertaDao{
                 bOferta.setPorcentajeOferta(rs.getInt(2));
                 bOferta.setFechaInicio(rs.getString(3));
                 bOferta.setFechaTermino(rs.getString(4));
+                bOferta.setNombre(rs.getString(5));
                 
             }
             rs.close();
