@@ -84,16 +84,15 @@ public class OraclePedidoCabecera implements PedidoCabeceraDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PEDIDO_CABECERA_tapi.ins( ?, ?,?, ?, ?,?)}";
+            sql = "{call FUKUSUKESUSHI.PEDIDO_CABECERA_tapi.ins( ?,?, ?, ?,?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
-            cs.setInt(1, pedidoCabecera.getPedidoCabeceraId());
-            cs.setInt(2, pedidoCabecera.getEstablecimientoId());
-            cs.setInt(3, pedidoCabecera.getClienteId());
-            
-            cs.setString(4, pedidoCabecera.getHoraPedido());
-            cs.setString(5, pedidoCabecera.getEstadoPedido());
-            cs.setString(6, pedidoCabecera.getFechaPedido());            
+            //cs.setInt(1, pedidoCabecera.getPedidoCabeceraId());
+            cs.setInt(1, pedidoCabecera.getEstablecimientoId());
+            cs.setInt(2, pedidoCabecera.getClienteId());            
+            cs.setString(3, pedidoCabecera.getHoraPedido());
+            cs.setString(4, pedidoCabecera.getEstadoPedido());
+            cs.setString(5, pedidoCabecera.getFechaPedido());            
             cs.execute();          
             cs.close();
         }

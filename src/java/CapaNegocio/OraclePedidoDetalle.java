@@ -83,15 +83,15 @@ public class OraclePedidoDetalle implements PedidoDetalleDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PEDIDO_DETALLE_tapi.ins(?, ?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PEDIDO_DETALLE_tapi.ins(?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             cs.setInt(1, pedidoDetalle.getPedidoCabeceraId());
-            cs.setInt(2, pedidoDetalle.getPedidoDetalleId());
-            cs.setString(3, pedidoDetalle.getHoraPedidoDetalle());
-            cs.setInt(4, pedidoDetalle.getProductoId());
-            cs.setInt(5, pedidoDetalle.getCantidad());
-            cs.setString(6, pedidoDetalle.getFechaPedidoDetalle());
+            //cs.setInt(2, pedidoDetalle.getPedidoDetalleId());
+            cs.setString(2, pedidoDetalle.getHoraPedidoDetalle());
+            cs.setInt(3, pedidoDetalle.getProductoId());
+            cs.setInt(4, pedidoDetalle.getCantidad());
+            cs.setString(5, pedidoDetalle.getFechaPedidoDetalle());
             cs.execute();          
             cs.close();
         }
