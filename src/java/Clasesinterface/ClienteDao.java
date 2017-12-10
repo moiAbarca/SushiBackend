@@ -19,4 +19,5 @@ public interface ClienteDao {
     public void modificarCliente(Cliente cliente) throws SQLException;
     public void eliminarCliente(Integer id) throws SQLException;
     public Cliente buscarCliente(Integer id) throws SQLException;
+    public Cliente buscarClienteRut(String rut) throws SQLException;
 }

@@ -79,7 +79,7 @@ public class OracleCliente implements ClienteDao{
         try
         {            
             con = db.getConnection();            
-            sql = "{call FUKUSUKESUSHI.CLIENTE_tapi.ins(?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)}";
+            sql = "{call FUKUSUKESUSHI.CLIENTE_tapi.ins(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
             cs = con.prepareCall(sql);            
             
             /*
@@ -90,14 +90,14 @@ public class OracleCliente implements ClienteDao{
             cs.setString(1, cliente.getRut());
             cs.setString(2, cliente.getDireccion());
             cs.setString(3, cliente.getApellido());
-            cs.setInt(4, cliente.getClienteId());            
-            cs.setString(5, cliente.getComuna());
-            cs.setInt(6, cliente.getTelefono());
-            cs.setString(7, cliente.getEmail());
-            cs.setInt(8, cliente.getUsuarioId());
-            cs.setString(9, cliente.getNombre());
-            cs.setString(10, cliente.getFechaNacimiento());
-            cs.setString(11, cliente.getSexo());
+            //cs.setInt(4, cliente.getClienteId());            
+            cs.setString(4, cliente.getComuna());
+            cs.setInt(5, cliente.getTelefono());
+            cs.setString(6, cliente.getEmail());
+            cs.setInt(7, cliente.getUsuarioId());
+            cs.setString(8, cliente.getNombre());
+            cs.setString(9, cliente.getFechaNacimiento());
+            cs.setString(10, cliente.getSexo());
             cs.execute();          
             cs.close();
         }
@@ -182,6 +182,57 @@ public class OracleCliente implements ClienteDao{
             cs = con.prepareCall(sql);
             //seteo el primer parámetro
             cs.setInt(1, id); 
+            //defino el tipo de dato que debe devolver
+            cs.registerOutParameter(2, OracleTypes.CURSOR);
+            cs.execute();
+            
+            //creo un resultset con todos los datos de la tabla Acceso
+            //devuelve el objeto OUT que se encuentra en el 2 parámetro
+            rs = (ResultSet)cs.getObject(2);
+            if(rs.next())
+            {
+                bCliente = new Cliente();
+                bCliente.setClienteId(rs.getInt(1));
+                bCliente.setUsuarioId(rs.getInt(2));
+                bCliente.setComuna(rs.getString(3));
+                bCliente.setRut(rs.getString(4));
+                bCliente.setNombre(rs.getString(5));
+                bCliente.setApellido(rs.getString(6));
+                bCliente.setDireccion(rs.getString(7));
+                bCliente.setFechaNacimiento(rs.getString(8));
+                bCliente.setSexo(rs.getString(9));
+                bCliente.setEmail(rs.getString(10));
+                bCliente.setTelefono(rs.getInt(11));                
+                
+            }
+            rs.close();
+            
+            cs.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return bCliente;
+    }
+
+    @Override
+    public Cliente buscarClienteRut(String rut) throws SQLException {
+        Cliente bCliente = new Cliente();
+        String sql = null;
+        Connection con = null;        
+        CallableStatement cs = null;
+        ResultSet rs;
+        try
+        {
+            con = db.getConnection();   
+            //llama a la función de tiene dos parámetros
+            //el primero de entrada
+            //y el segundo de salida
+            sql = ("{call FUKUSUKESUSHI.BUSCAR_CLIENTE_RUT(?,?)}");            
+            cs = con.prepareCall(sql);
+            //seteo el primer parámetro
+            cs.setString(1, rut); 
             //defino el tipo de dato que debe devolver
             cs.registerOutParameter(2, OracleTypes.CURSOR);
             cs.execute();

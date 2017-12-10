@@ -76,9 +76,9 @@ public class OracleProducto implements ProductoDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.PRODUCTO_tapi.ins(?, ?, ?, ?, ?, ?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.PRODUCTO_tapi.ins(?, ?, ?, ?,  ?, ?, ?)}";
             cs = con.prepareCall(sql);
-            //le seteo los 3 parámetros de entrada
+            //le seteo los 7 parámetros de entrada
             cs.setString(1, producto.getImagenProdcuto());
             cs.setString(2, producto.getNombreProducto());
             cs.setString(3, producto.getDescripcionProducto());
@@ -86,7 +86,7 @@ public class OracleProducto implements ProductoDao{
             cs.setBoolean(5, producto.isDisponibilidadProducto());
             cs.setInt(6, producto.getPorcionesProdcuto());
             cs.setInt(7, producto.getPrecioProducto());
-            cs.setInt(8, producto.getProductoId());            
+            //cs.setInt(8, producto.getProductoId());            
             cs.execute();          
             cs.close();
         }
@@ -168,6 +168,54 @@ public class OracleProducto implements ProductoDao{
             cs = con.prepareCall(sql);
             //seteo el primer parámetro
             cs.setInt(1, id); 
+            //defino el tipo de dato que debe devolver
+            cs.registerOutParameter(2, OracleTypes.CURSOR);
+            cs.execute();
+            
+            //creo un resultset con todos los datos de la tabla Acceso
+            //devuelve el objeto OUT que se encuentra en el 2 parámetro
+            rs = (ResultSet)cs.getObject(2);
+            if(rs.next())
+            {
+                bProducto = new Producto();
+                bProducto.setProductoId(rs.getInt(1));
+                bProducto.setCategoriaProductoId(rs.getInt(2));
+                bProducto.setNombreProducto(rs.getString(3));
+                bProducto.setPorcionesProdcuto(rs.getInt(4));
+                bProducto.setPrecioProducto(rs.getInt(5));
+                bProducto.setDescripcionProducto(rs.getString(6));
+                bProducto.setImagenProdcuto(rs.getString(7));
+                bProducto.setDisponibilidadProducto(rs.getBoolean(8));
+                
+            }
+            rs.close();
+            
+            cs.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return bProducto;
+    }
+
+    @Override
+    public Producto buscarProductoNombre(String nombre) throws SQLException {
+        Producto bProducto = new Producto();
+        String sql = null;
+        Connection con = null;        
+        CallableStatement cs = null;
+        ResultSet rs;
+        try
+        {
+            con = db.getConnection();   
+            //llama a la función de tiene dos parámetros
+            //el primero de entrada
+            //y el segundo de salida
+            sql = ("{call FUKUSUKESUSHI.BUSCAR_PRODUCTO_NOMBRE(?,?)}");            
+            cs = con.prepareCall(sql);
+            //seteo el primer parámetro
+            cs.setString(1, nombre); 
             //defino el tipo de dato que debe devolver
             cs.registerOutParameter(2, OracleTypes.CURSOR);
             cs.execute();

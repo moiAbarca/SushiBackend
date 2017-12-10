@@ -86,4 +86,19 @@ public class ServiceProducto {
         {}
         return pro;
     }
+    
+    @WebMethod(operationName = "buscarProductoNombre")        
+    public Producto buscarProductoNombre(@WebParam(name = "nombre") String nombre)  
+    {
+        Producto pro = new Producto();
+        try{
+        ProductoDao dao = new OracleProducto();
+        pro = dao.buscarProductoNombre(nombre);
+        }
+        catch(Exception ex)
+        {}
+        return pro;
+    }
+    
+    
 }

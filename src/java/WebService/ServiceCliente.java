@@ -82,4 +82,17 @@ public class ServiceCliente {
         {}
         return cl;
     }
+    
+    @WebMethod(operationName = "buscarClienteRut")        
+    public Cliente buscarClienteRut(@WebParam(name = "rut") String rut)  
+    {
+        Cliente cl = new Cliente();
+        try{
+        ClienteDao dao = new OracleCliente();      
+        cl = dao.buscarClienteRut(rut);
+        }
+        catch(Exception ex)
+        {}
+        return cl;
+    }
 }

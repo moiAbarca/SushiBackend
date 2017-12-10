@@ -20,4 +20,5 @@ public interface UsuarioDao {
     public void eliminarUsuario(Integer id) throws SQLException;
     public Usuario buscarUsuario(Integer id) throws SQLException;
     public Usuario buscarLogin(String usuario) throws SQLException;
+    
 }

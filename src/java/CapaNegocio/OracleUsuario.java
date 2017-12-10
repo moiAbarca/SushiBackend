@@ -80,13 +80,13 @@ public class OracleUsuario implements UsuarioDao{
         {            
             con = db.getConnection();
             //llama al insertar de la BD que tiene 3 parámetros de entrada 
-            sql = "{call FUKUSUKESUSHI.USUARIO_tapi.ins(?, ?, ?)}";
+            sql = "{call FUKUSUKESUSHI.USUARIO_tapi.ins( ?, ?)}";
             cs = con.prepareCall(sql);
             //le seteo los 3 parámetros de entrada
             
             cs.setString(1, usuario.getPass());
-            cs.setInt(2, usuario.getUsuarioId());
-            cs.setString(3, usuario.getUsuario());
+            //cs.setInt(2, usuario.getUsuarioId());
+            cs.setString(2, usuario.getUsuario());
             cs.execute();          
             cs.close();
         }
