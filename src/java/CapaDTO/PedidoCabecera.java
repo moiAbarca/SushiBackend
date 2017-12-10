@@ -21,8 +21,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PedidoCabecera {
     private int pedidoCabeceraId;
-    private int establecimientoId;
-    
+    private int establecimientoId;    
     private int clienteId;
     private String fechaPedido;
     private String horaPedido;
